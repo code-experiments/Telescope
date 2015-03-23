@@ -33,6 +33,10 @@ viewsMenu = [];
 
 secondaryNav = [
     {
+        template: 'feedbackLink',
+        order : 8
+    },
+    {
         template: 'userMenu',
         order: 10
     },

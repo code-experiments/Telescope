@@ -31,7 +31,7 @@ Template[getTemplate('customNav')].helpers({
         return (color == 'white' || color == '#fff' || color == '#ffffff') ? "white-background" : '';
     },
     isAdmin:  function(){
-        var user = Meteor.user()
+        var user = Meteor.user();
         return isAdmin(user);
     }
 });
