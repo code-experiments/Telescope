@@ -1,0 +1,121 @@
+body{
+  background: white;
+}
+
+//nav bar start
+.logo.header-module a{
+  font-weight: lighter;
+}
+.logo.header-module {
+  padding: 0 20px;
+  text-align: left;
+}
+.header-content{
+  height: 60px;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #16A086;
+}
+
+.submit.btn.header-submodule{
+  background: #ffffff!important;
+  color: #16A086!important;
+}
+
+// nav bar end
+.post-category:hover,
+.theme-color {
+  color: #16A086!important;
+}
+
+// Post Layout
+.post{
+  border-bottom: 0;
+}
+
+.post-avatars.post-module{
+  display: none;
+}
+
+.post-upvote.post-module{
+  text-align: center;
+}
+.post-upvote.post-module label{
+  color: #808080;
+  font-size: 0.8em;
+}
+.source-link.post-module{
+  order: 4;
+  position: relative;
+}
+
+.posts-list .post-discuss{
+  padding-top: 2px;
+}
+
+.action-count{
+  top: 0;
+  font-size: 0.8em;
+}
+
+.post-category{
+  color: #7f898d;
+  cursor: pointer;
+  padding: 1px;
+  background: transparent!important;
+  text-transform: capitalize;
+}
+
+// Share Section
+.post-share {
+  display: initial !important;
+}
+.action-icon.icon-share:hover{
+  opacity: 1;
+}
+.action-icon.icon-share, .action-icon.icon-source, .action-icon.icon-comment{
+  opacity: 0.7;
+  width: 25px;
+  height: 25px;
+  background-size: cover!important;
+}
+
+.action-icon.icon-comment{
+  background: url('/img/message31.png') no-repeat;
+}
+
+.action-icon.icon-comment:before{
+  content: "";
+}
+
+.action-icon.icon-share{
+  background: url('/img/share55.png') no-repeat;
+}
+.action-icon.icon-source{
+  width: 22px;
+  height: 22px;
+  background: url('/img/link49.png') no-repeat;
+}
+
+.action-icon.icon-share:before, .action-icon.icon-source:before {
+  content: "";
+}
+
+.share-options{
+  z-index: 10;
+}
+// Share end
+
+//upvote
+.upvote-link {
+  margin-bottom: -7px;
+}
+//upvote
+
+.post-heading a, .post-heading label{
+  font-weight: normal;
+}

@@ -9,7 +9,6 @@ standard-app-packages
 backbone
 accounts-base
 accounts-password
-accounts-twitter
 spiderable
 email
 accounts-facebook
@@ -69,11 +68,9 @@ telescope-theme-base
 telescope-module-share
 telescope-api
 telescope-rss
-telescope-search
 telescope-tags
 telescope-theme-hubble
 telescope-email
-telescope-embedly
 telescope-newsletter
 telescope-daily
 telescope-update-prompt
@@ -83,8 +80,8 @@ telescope-singleday
 telescope-invites
 telescope-post-by-feed
 telescope-releases
-telescope-getting-started
 telescope-subscribe-to-posts
 telescope-tagline-banner
 
 # Custom Packages
+telescope-fundrack

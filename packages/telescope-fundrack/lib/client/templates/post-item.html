@@ -1,0 +1,43 @@
+<template name="postFRHeading">
+	<a href="{{details.url}}" class="theme-color">{{details.name}}</a>
+	<label> just got funded by {{details.investor}} </label>
+	{{#if details.amount}}
+	<label> - </label><label class="theme-color">{{details.amount}}</label>
+	{{/if}}
+</template>
+<template name="postFRMeta">
+	{{#if details.categories}}
+	<span class="categories meta-item">
+		{{#each categoriesArray}}
+		    <a href="{{categoryLink}}" class="post-category category-{{slug}}">#{{name}}</a>
+		{{/each}}
+	</span>
+	{{/if}}
+	{{#if details.country}}
+	<span class="post-category meta-item">
+		#{{details.country}}
+	</span>
+	{{/if}}
+	{{#if details.funding_round}}
+	<span class="post-category funding-round meta-item">
+		#{{details.funding_round}}
+	</span>
+	{{/if}}
+</template>
+
+<template name="postFRUpvote">
+	{{#if upvoted}}
+	<span class="upvote-link voted action" title="{{_ "upvoted"}}">
+	<i class="icon-check action-icon" aria-hidden></i>
+	<span class="sr-only">{{_ "upvoted"}}</span>
+	</span>
+	{{else}}
+	<a class="upvote-link not-voted action" href="#" title="{{_ "upvote_"}}">
+	<i class="icon-up action-icon" aria-hidden="true"></i>
+	<span class="sr-only">{{_ "upvote_"}}</span>
+	</a>
+	{{/if}}
+	{{#if upvotes}}
+		<label class="upvote-count">{{upvotes}}</label>
+	{{/if}}
+</template>

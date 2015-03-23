@@ -315,7 +315,7 @@ userProfileEdit = [
     template: 'userAccount',
     order: 1
   }
-]
+];
 
 userProfileCompleteChecks.push(
   function(user) {
@@ -326,7 +326,7 @@ userProfileCompleteChecks.push(
 // ------------------------------ Dynamic Templates ------------------------------ //
 
 
-templates = {}
+templates = {};
 
 getTemplate = function (name) {
   // if template has been overwritten, return this; else return template name
