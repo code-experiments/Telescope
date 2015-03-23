@@ -13,16 +13,21 @@ postMeta = [
     {
         template: 'postFRMeta',
         order: 10
+    },
+    {
+        template: 'postAdmin',
+        order: 20
     }
-//    {
-//        template: 'postFundingRound',
-//        order: 20
-//    },
 //    {
 //        template: 'postCountry',
 //        order: 25
 //    }
 ];
+
+footerModules.push({
+    template:'trackers',
+    order: 40
+});
 
 viewsMenu = [];
 

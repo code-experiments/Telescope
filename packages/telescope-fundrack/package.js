@@ -24,9 +24,9 @@ Package.onUse(function (api) {
     // client
 
     api.use([
-        'jquery',                     // useful for DOM interactions
-        'underscore',                 // JavaScript swiss army knife library
-        'templating'                  // required for client-side templates
+        'jquery',
+        'underscore',
+        'templating'
     ], ['client']);
 
     // server
@@ -56,6 +56,9 @@ Package.onUse(function (api) {
 
     // client
 
+    api.addFiles([
+        'lib/server/feedback.js'
+    ], ['server']);
 
     api.addFiles([
         'lib/client/templates/custom_template.html',

@@ -1,44 +1,54 @@
+var getSiteUrl = Package['telescope-lib'].getSiteUrl;
+
 Meteor.startup(function () {
     Template[getTemplate('postFRHeading')].helpers({
-        details: function(){
+        details: function () {
             return this;
         }
     });
     Template[getTemplate('postFRMeta')].helpers({
-        details: function(){
+        details: function () {
             return this;
         },
-        categoriesArray: function(){
+        categoriesArray: function () {
             return _.map(this.categories, function (categoryId) { // note: this.categories maybe be undefined
                 return Categories.findOne(categoryId);
             });
         },
-        categoryLink: function(){
-            return getCategoryUrl(this.slug);
+        categoryLink: function () {
+            return getSiteUrl() + '/category/' + this.slug;
         }
     });
     Template[getTemplate('postFRUpvote')].helpers({
-        upvoted: function(){
+        upvoted: function () {
             var user = Meteor.user();
-            if(!user) return false;
+            if (!user) return false;
             return _.include(this.upvoters, user._id);
         },
-        upvotes: function(){
+        upvotes: function () {
             return this.upvotes;
         }
     });
 
     Template[getTemplate('postFRUpvote')].events({
-        'click .upvote-link': function(e, instance){
+        'click .upvote-link': function (e, instance) {
             var post = this;
             e.preventDefault();
-            if(!Meteor.user()){
+            if (!Meteor.user()) {
                 Router.go('atSignIn');
                 flashMessage(i18n.t("please_log_in_first"), "info");
             }
-            Meteor.call('upvotePost', post, function(error, result){
+            Meteor.call('upvotePost', post, function (error, result) {
                 trackEvent("post upvoted", {'_id': post._id});
             });
+        }
+    });
+    Template[getTemplate('postContent')].events({
+        'click .post-info': function (event) {
+            var element = $(event.target);
+            if(!element.hasClass('post-category') && location.pathname.indexOf('/posts/') == -1){
+                location.href = location.origin + "/posts/" + this._id
+            }
         }
     });
 

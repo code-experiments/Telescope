@@ -17,7 +17,7 @@ var settings = {
     "emailNotifications" : false,
     "embedlyKey" : "8ba12b61f3e743be968eee0dd43c04c4",
     "enableNewsletter" : true,
-    "googleAnalyticsId" : "UA-27546725-6",// TODO Need to Verify
+    "googleAnalyticsId" : "UA-61088713-1",
     "headerColor" : headerColor,
     "kadiraAppId" : "Wk5LZofhAuBf2oeiM",
     "kadiraAppSecret" : "7d9da423-87de-4374-b450-3d59dc16ea92",
@@ -40,7 +40,8 @@ var settings = {
     "thumbnailHeight" : 0,
     "thumbnailWidth" : 0,
     "title" : "fundrack",
-    "twitterAccount" : "fundrack" // TODO Need to Verify
+    "twitterAccount" : "fundrack", // TODO Need to Verify
+    "mailUrl": "smtp://mail@prakash.io:CEIOI9A1tMooQ08p4TlvHw@smtp.mandrillapp.com:587/"
 };
 
 Meteor.startup(function(){
