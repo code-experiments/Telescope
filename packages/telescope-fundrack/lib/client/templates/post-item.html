@@ -11,16 +11,12 @@
 		{{#each categoriesArray}}
 		    <a href="{{categoryLink}}" class="post-category category-{{slug}}">#{{name}}</a>
 		{{/each}}
-	</span>
-	{{/if}}
-	{{#if details.country}}
-	<span class="post-category meta-item">
-		#{{details.country}}
-	</span>
-	{{/if}}
-	{{#if details.funding_round}}
-	<span class="post-category funding-round meta-item">
-		#{{details.funding_round}}
+		{{#if details.country}}
+		<a class="post-category">#{{details.country}}</a>
+		{{/if}}
+		{{#if details.funding_round}}
+		<a class="post-category">#{{details.funding_round}}</a>
+		{{/if}}
 	</span>
 	{{/if}}
 </template>

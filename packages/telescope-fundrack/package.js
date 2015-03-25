@@ -66,11 +66,14 @@ Package.onUse(function (api) {
         'lib/client/templates/empty-template.html',
         'lib/client/templates/post-item.html',
         'lib/client/templates/post-item.js',
+        'lib/client/templates/post-list.html',
+        'lib/client/templates/post-list.js',
         'lib/client/templates/custom-nav.html',
         'lib/client/templates/custom-nav.js',
         'lib/client/templates/source-link.html',
         'lib/client/templates/source-link.js',
-        'lib/client/css/styles.scss'
+        'lib/client/css/styles.scss',
+        'lib/client/css/panel.scss'
     ], ['client']);
 
     api.export([

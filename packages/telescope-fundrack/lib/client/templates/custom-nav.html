@@ -1,4 +1,5 @@
 <template name="customNav">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<header class="header {{headerClass}}">
 		<div class="header-content">
 			<a href="#menu" class="mobile-only mobile-menu-button button">
@@ -28,6 +29,11 @@
 					</li>
 					{{/each}}
 				{{/if}}
+				{{#if notLoggedIn}}
+					<li>
+						<a class="submit btn header-submodule btn-primary" href="/sign-in">Submit</a>
+					</li>
+				{{/if}}
 			</ul>
 
 			{{#if logo_url}}
@@ -38,9 +44,9 @@
 			</h1>
 
 			{{else}}
-			<h1 class="logo header-module"><a href="/"><label style="font-weight: bold">fund</label>rack</a></h1>
+			<h1 class="logo header-module"><a href="/"><span style="font-weight: bold">fund</span>rack</a></h1>
 			{{/if}}
-			<label></label>
+			<label class="caption">the best funding news, everyday</label>
 		</div>
 	</header>
 </template>

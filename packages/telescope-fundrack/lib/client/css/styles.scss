@@ -1,12 +1,31 @@
 body{
   background: white;
+  font-family:  Helvetica, 'Helvetica Neue', Arial, sans-serif;
 }
 
 //nav bar start
-.logo.header-module a{
-  font-weight: lighter;
+a.account-link[href="/register"] {
+  display: none;
 }
-.logo.header-module {
+
+.header h1{
+  display: inline-block;
+  font-size: 30px!important;
+}
+
+.header label.caption{
+  display: inline-block;
+  position: absolute;
+  left: 170px;
+  top: 18px;
+  font-size: 17px;
+  font-weight: 200;
+}
+
+.header .logo a{
+  font-weight: 200;
+}
+.header .logo {
   padding: 0 20px;
   text-align: left;
 }
@@ -17,8 +36,8 @@ body{
   margin: 0 auto;
 }
 
-.header {
-  background: #16A086;
+.header, button[type=submit]{
+  background: #16A086!important;
 }
 
 .submit.btn.header-submodule{
@@ -26,7 +45,16 @@ body{
   color: #16A086!important;
 }
 
+.feedback-link{
+  margin-right: 10px;
+}
+
 // nav bar end
+
+.grid.tagline{
+  display: none;
+}
+
 .post-category:hover,
 .theme-color {
   color: #16A086!important;
@@ -35,6 +63,10 @@ body{
 // Post Layout
 .post{
   border-bottom: 0;
+}
+
+.post-info{
+  cursor: pointer;
 }
 
 .post-avatars.post-module{
@@ -63,7 +95,7 @@ body{
 }
 
 .post-category{
-  color: #7f898d;
+  color: #7f898d!important;
   cursor: pointer;
   padding: 1px;
   font-weight: normal!important;
@@ -119,4 +151,28 @@ body{
 
 .post-heading a, .post-heading label{
   font-weight: normal;
+}
+
+// Login Form
+#at-facebook{
+  height: 40px;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+form{
+  input[type=submit]{
+    height: 40px;
+    font-size: 18px;
+    padding: 5px 10px;
+  }
+  input[type=text],input[type=password]{
+    height: 40px;
+    font-size: 15px;
+  }
+}
+
+.post-group-label{
+  margin-top: 30px;
+  color: #7f898d;
+  margin-bottom: 10px;
 }

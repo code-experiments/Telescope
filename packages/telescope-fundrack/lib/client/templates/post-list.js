@@ -1,8 +1,8 @@
-Template[getTemplate('posts_list')].created = function() {
+Template[getTemplate('postFRList')].created = function() {
     Session.set('listPopulatedAt', new Date());
 };
 
-Template[getTemplate('posts_list')].helpers({
+Template[getTemplate('postFRList')].helpers({
     postsLayout: function () {
         return getSetting('postsLayout', 'posts-list');
     },
@@ -23,25 +23,15 @@ Template[getTemplate('posts_list')].helpers({
     postsCursor : function () {
         if (this.postsCursor) { // not sure why this should ever be undefined, but it can apparently
             var datesMap= {};
-            this.postsCursor.forEach(function (post, index, cursor) {
+            this.postsCursor.each(function (post, index, cursor) {
                 post.rank = index;
-                var date = getDateStamp(post.createdAt);
-                if(datesMap[date])
-                    datesMap[date].push(post);
-                else
-                    datesMap[date] = [post];
+                datesMap[getPostedDate(post)] = post;
             });
-            var finalArray = [];
-            for(var key in datesMap){
-                var dateString = getPostedDate(datesMap[key][0]);
-                finalArray.push({date:dateString, results:datesMap[key], sortKey: key});
-            }
-            finalArray = finalArray.sort(function(a, b){
-                return (a.sortKey < b.sortKey);
-            });
-            return finalArray;
+            console.log("custom");
+            console.log(datesMap);
+            return [];
         } else {
-            console.log('postsCursor not defined')
+            console.log('postsCursor not defined');
         }
     },
     postsLoadMore: function () {
@@ -51,13 +41,10 @@ Template[getTemplate('posts_list')].helpers({
         return getTemplate('postsListIncoming');
     }
 });
-var getDateStamp = function(dateString){
-    var date = new Date(dateString);
-    return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()).getTime();
-};
+
 var getPostedDate = function(post){
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var date = new Date(post.createdAt);
-    return days[date.getUTCDay()] + ", " + date.getUTCDate() + " " + months[date.getUTCMonth()] + " " + date.getUTCFullYear();
+    return days[date.getDay()] + "," + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear();
 };

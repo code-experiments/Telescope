@@ -46,8 +46,10 @@ Meteor.startup(function () {
     Template[getTemplate('postContent')].events({
         'click .post-info': function (event) {
             var element = $(event.target);
-            if(!element.hasClass('post-category') && location.pathname.indexOf('/posts/') == -1){
-                location.href = location.origin + "/posts/" + this._id
+            if(!element.hasClass('post-category')
+                && location.pathname.indexOf('/posts/') == -1
+                && element.closest('.post-meta-item').length == 0){
+                location.href = "/posts/" + this._id
             }
         }
     });

@@ -2,10 +2,11 @@
 
 
 <template name="feedbackLink">
-	<a class="account-link sign-in" href="/feedback">Feedback</a>
+	<a class="feedback-link" href="/feedback">Feedback</a>
 </template>
 
 <template name="feedbackSubmit">
+	<h2 style="margin-top: 30px"> Enter your feedback</h2>
 	<form class="feedback-form form-horizontal">
 		<div class="form-group">
 			<label for="name"> Name</label>
@@ -20,7 +21,7 @@
 			<textarea name="name" id="message"></textarea>
 		</div>
 		<div class="form-group">
-			<input type="submit" value="submit"/>
+			<input type="submit" value="Submit Feedback"/>
 			</div>
 	</form>
 </template>

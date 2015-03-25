@@ -4,6 +4,7 @@ templates['postModule'] = 'postItem';
 templates['nav'] = 'customNav';
 templates['postAvatars'] = 'empty';
 templates['postUpvote'] = 'postFRUpvote';
+//templates["posts_list"] = "postFRList";
 
 postModules.push({
     template: 'sourceLink',
