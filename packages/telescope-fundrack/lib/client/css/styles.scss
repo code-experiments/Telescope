@@ -13,22 +13,29 @@ a.account-link[href="/register"] {
   font-size: 30px!important;
 }
 
-.header label.caption{
-  display: inline-block;
-  position: absolute;
-  left: 170px;
-  top: 18px;
-  font-size: 17px;
-  font-weight: 200;
+.header {
+  label.caption{
+    display: inline-block;
+    position: absolute;
+    left: 165px;
+    top: 21px;
+    font-size: 17px;
+    font-weight: 200;
+  }
+
+  .logo a{
+    font-weight: 200;
+  }
+
+  .logo {
+    height: 55px;
+    padding: 0;
+    text-align: left;
+    width: 150px;
+  }
+
 }
 
-.header .logo a{
-  font-weight: 200;
-}
-.header .logo {
-  padding: 0 20px;
-  text-align: left;
-}
 .header-content{
   height: 60px;
   position: relative;
