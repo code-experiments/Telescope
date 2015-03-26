@@ -25,7 +25,7 @@ Template[getTemplate('posts_list')].helpers({
             var datesMap= {};
             this.postsCursor.forEach(function (post, index, cursor) {
                 post.rank = index;
-                var date = getDateStamp(post.createdAt);
+                var date = getDateStamp(post.postedAt);
                 if(datesMap[date])
                     datesMap[date].push(post);
                 else
@@ -58,6 +58,6 @@ var getDateStamp = function(dateString){
 var getPostedDate = function(post){
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    var date = new Date(post.createdAt);
+    var date = new Date(post.postedAt);
     return days[date.getUTCDay()] + ", " + date.getUTCDate() + " " + months[date.getUTCMonth()] + " " + date.getUTCFullYear();
 };
