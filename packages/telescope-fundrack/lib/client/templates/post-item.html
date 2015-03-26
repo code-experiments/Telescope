@@ -1,5 +1,5 @@
 <template name="postFRHeading">
-	<a href="{{details.url}}" class="theme-color">{{details.name}}</a>
+	<a href="/view?id={{details._id}}" class="theme-color">{{details.name}}</a>
 	<label> just got funded by {{details.investor}} </label>
 	{{#if details.amount}}
 	<label> - </label><label class="theme-color">{{details.amount}}</label>

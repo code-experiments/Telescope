@@ -318,8 +318,8 @@ submitPost = function (post) {
     throw new Meteor.Error(602, i18n.t('please_fill_in_a_title'));
 
   // check that there are no posts with the same URL
-  if(!!post.url)
-    checkForPostsWithSameUrl(post.url, user);
+//  if(!!post.url)
+//    checkForPostsWithSameUrl(post.url, user);
 
   // ------------------------------ Properties ------------------------------ //
 

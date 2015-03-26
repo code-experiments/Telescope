@@ -57,7 +57,8 @@ Package.onUse(function (api) {
     // client
 
     api.addFiles([
-        'lib/server/feedback.js'
+        'lib/server/feedback.js',
+        'lib/server/server.js'
     ], ['server']);
 
     api.addFiles([
