@@ -52,9 +52,6 @@ var fundingDateProperty = {
         autoform: {
             editable: true,
             type: "bootstrap-datetimepicker"
-        },
-        autoValue: function(){
-            return new Date()
         }
     }
 };
