@@ -7,5 +7,3 @@ Meteor.startup(function () {
 });
 if (getSetting('mailUrl'))
   process.env.MAIL_URL = getSetting('mailUrl');
-
-console.log(process.env.MAIL_URL);

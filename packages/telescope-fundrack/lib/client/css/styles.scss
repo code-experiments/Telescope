@@ -36,7 +36,7 @@ a.account-link[href="/register"] {
   margin: 0 auto;
 }
 
-.header, button[type=submit]{
+.header, button[type=submit], .btn.btn-primary{
   background: #16A086!important;
 }
 
@@ -151,6 +151,7 @@ a.account-link[href="/register"] {
 
 .post-heading a, .post-heading label{
   font-weight: normal;
+  cursor: pointer;
 }
 
 // Login Form
