@@ -49,7 +49,7 @@ Meteor.startup(function () {
             if(!element.hasClass('post-category')
                 && location.pathname.indexOf('/posts/') == -1
                 && element.closest('.post-meta-item').length == 0){
-                location.href = "/posts/" + this._id
+                Router.go('post_page', {_id: this._id});
             }
         }
     });
