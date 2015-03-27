@@ -69,22 +69,31 @@ var fundingRoundProperty = {
             options: function () {
                 return [{
                     label:"Seed Round",
-                    value: "seed"
+                    value: "Seed"
                 },{
                     label:"Angel Round",
-                    value: "angel"
+                    value: "Angel"
+                },{
+                    label:"Pre Series A",
+                    value: "Pre-Series-A"
                 },{
                     label:"Series A",
-                    value: "series-a"
+                    value: "Series-A"
                 },{
                     label:"Series B",
-                    value: "series-b"
+                    value: "Series-B"
                 },{
                     label:"Series C",
-                    value: "series-C"
+                    value: "Series-C"
                 },{
                     label:"Series D",
-                    value: "series-D"
+                    value: "Series-D"
+                },{
+                    label:"Series E",
+                    value: "Series-E"
+                },{
+                    label:"None",
+                    value: "none"
                 }];
             }
         }

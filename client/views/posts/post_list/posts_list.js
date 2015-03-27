@@ -36,8 +36,8 @@ Template[getTemplate('posts_list')].helpers({
                 var dateString = getPostedDate(datesMap[key][0]);
                 finalArray.push({date:dateString, results:datesMap[key], sortKey: key});
             }
-            finalArray = finalArray.sort(function(a, b){
-                return (a.sortKey < b.sortKey);
+            finalArray = finalArray.sort(function(b, a){
+                return (parseInt(a.sortKey) - parseInt(b.sortKey));
             });
             return finalArray;
         } else {

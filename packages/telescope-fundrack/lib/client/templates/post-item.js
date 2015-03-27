@@ -17,6 +17,9 @@ Meteor.startup(function () {
         },
         categoryLink: function () {
             return getSiteUrl() + '/category/' + this.slug;
+        },
+        showFundingRound: function(){
+            return this.funding_round && this.funding_round.length > 0 && this.funding_round != 'none';
         }
     });
     Template[getTemplate('postFRUpvote')].helpers({
