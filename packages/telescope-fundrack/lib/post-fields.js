@@ -92,6 +92,9 @@ var fundingRoundProperty = {
                     label:"Series E",
                     value: "Series-E"
                 },{
+                    label:"Private Equity",
+                    value: "Private-Equity"
+                },{
                     label:"None",
                     value: "none"
                 }];
