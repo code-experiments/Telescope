@@ -1,0 +1,26 @@
+
+@media screen and (max-width: 30em) {
+	.posts-list .post-discuss,
+	.posts-list .source-link,
+	.posts-list .post-upvote,
+	.posts-list .post-share {
+		display: inline-block!important;
+		flex-grow: 1;
+		order: 3;
+	}
+	.posts-list .post-actions{
+		display: none!important;
+	}
+
+	.posts-list .post-content{
+		flex-shrink: 0;
+	}
+     .post{
+	     flex-wrap: wrap!important;
+     }
+
+     .action-count{
+	     left: 10px;
+	     text-align: left;
+     }
+}

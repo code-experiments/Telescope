@@ -31,6 +31,13 @@ footerModules.push({
 
 viewsMenu = [];
 
+primaryNav = [
+    {
+        template:"adminMenu",
+        order: 20
+    }
+];
+
 secondaryNav = [
     {
         template: 'feedbackLink',

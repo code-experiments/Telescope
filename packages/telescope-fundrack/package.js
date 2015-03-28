@@ -74,11 +74,13 @@ Package.onUse(function (api) {
         'lib/client/templates/source-link.html',
         'lib/client/templates/source-link.js',
         'lib/client/css/styles.scss',
-        'lib/client/css/panel.scss'
+        'lib/client/css/panel.scss',
+        'lib/client/css/media.css'
     ], ['client']);
 
     api.export([
         'viewsMenu',
+        'primaryNav',
         'secondaryNav',
         'postHeading',
         'postMeta',

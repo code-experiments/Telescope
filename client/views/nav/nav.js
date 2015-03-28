@@ -29,10 +29,10 @@ Template[getTemplate('nav')].helpers({
   }
 });
 
-Template[getTemplate('nav')].events({
-  'click .mobile-menu-button': function(e){
-    e.preventDefault();
-    e.stopPropagation(); // Make sure we don't immediately close the mobile nav again. See layout.js event handler.
-    $('body').toggleClass('mobile-nav-open');
-  }
-});
+//Template[getTemplate('nav')].events({
+//  'click .mobile-menu-button': function(e){
+//    e.preventDefault();
+//    e.stopPropagation(); // Make sure we don't immediately close the mobile nav again. See layout.js event handler.
+//    $('body').toggleClass('mobile-nav-open');
+//  }
+//});
