@@ -34,6 +34,10 @@ Template[getTemplate('customNav')].helpers({
         var user = Meteor.user();
         return isAdmin(user);
     },
+    isNotAdmin:  function(){
+        var user = Meteor.user();
+        return !isAdmin(user);
+    },
     notLoggedIn:  function(){
         return !Meteor.user();
     }

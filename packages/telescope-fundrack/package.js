@@ -71,6 +71,8 @@ Package.onUse(function (api) {
         'lib/client/templates/post-list.js',
         'lib/client/templates/custom-nav.html',
         'lib/client/templates/custom-nav.js',
+        'lib/client/templates/submit-post.html',
+        'lib/client/templates/submit-post.js',
         'lib/client/templates/source-link.html',
         'lib/client/templates/source-link.js',
         'lib/client/css/styles.scss',

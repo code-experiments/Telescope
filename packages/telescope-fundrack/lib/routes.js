@@ -6,4 +6,8 @@ Meteor.startup(function () {
             return coreSubscriptions.subscribe('allUsersAdmin');
         }
     });
+    Router.route('/submit-post', {
+        name: 'submit-post',
+        template: getTemplate('submit-post')
+    });
 });

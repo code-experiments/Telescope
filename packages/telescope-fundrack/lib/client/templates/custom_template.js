@@ -13,7 +13,14 @@ Meteor.startup(function () {
                 email: form.email.value,
                 message: form.message.value
             };
-            Meteor.call("sendFeedback", feedback);
+            Meteor.call("sendFeedback", feedback, function(err){
+                if(err){
+                    flashMessage(err.message, 'error');
+                } else {
+                    Router.go('/');
+                    flashMessage("Thanks for your feedback", 'success');
+                }
+            });
             return false;
         }
     });

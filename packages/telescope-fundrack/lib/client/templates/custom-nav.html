@@ -29,9 +29,9 @@
 					</li>
 					{{/each}}
 				{{/if}}
-				{{#if notLoggedIn}}
+				{{#if isNotAdmin}}
 					<li>
-						<a class="submit btn header-submodule btn-primary" href="/sign-in">Submit</a>
+						<a class="submit btn header-submodule btn-primary" href="/submit-post">Submit</a>
 					</li>
 				{{/if}}
 			</ul>
@@ -52,7 +52,9 @@
 	</header>
 </template>
 <template name="submitFRButton">
-	{{#if canPost}}
-	<a id="submit" class="submit btn header-submodule btn-primary" href="/submit">{{_ "submit"}}</a>
+	{{#if isAdmin}}
+		{{#if canPost}}
+			<a id="submit" class="submit btn header-submodule btn-primary" href="/submit">{{_ "submit"}}</a>
+		{{/if}}
 	{{/if}}
 </template>
