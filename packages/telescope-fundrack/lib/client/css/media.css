@@ -1,11 +1,15 @@
 
-@media screen and (max-width: 40em) {
+@media screen and (max-width: 767px) {
 	.posts-list .post-discuss,
 	.posts-list .source-link,
 	.posts-list .post-upvote,
 	.posts-list .post-share {
 		display: inline-block!important;
+		-moz-flex-grow: 1;
+		-webkit-flex-grow: 1;
 		flex-grow: 1;
+		-moz-order: 3;
+		-webkit-order: 3;
 		order: 3;
 	}
 	.posts-list .post-actions{
@@ -13,9 +17,13 @@
 	}
 
 	.posts-list .post-content{
-		flex-shrink: 0;
+		-moz-flex-shrink:0!important;
+		-webkit-flex-shrink:0!important;
+		flex-shrink: 0!important;
 	}
      .post{
+	     -moz-flex-wrap: wrap!important;
+	     -webkit-flex-wrap: wrap!important;
 	     flex-wrap: wrap!important;
      }
 
