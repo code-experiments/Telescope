@@ -51,7 +51,7 @@ a.account-link[href="/register"] {
   color: #16A086!important;
 }
 
-.feedback-link{
+.header-module.desktop-only li{
   margin-right: 10px;
 }
 
@@ -69,6 +69,7 @@ a.account-link[href="/register"] {
 // Post Layout
 .post{
   border-bottom: 0;
+  margin-bottom: 3px;
 }
 
 .post-info{

@@ -39,7 +39,7 @@ var settings = {
     "tagline" : "Stay on the top of today's funding news!",
     "thumbnailHeight" : 0,
     "thumbnailWidth" : 0,
-    "title" : "fundrack",
+    "title" : "FundRack | 'The Best Funding News, Everyday",
     "twitterAccount" : "fundrack", // TODO Need to Verify
     "mailUrl": "smtp://mail@prakash.io:CEIOI9A1tMooQ08p4TlvHw@smtp.mandrillapp.com:587/"
 };
