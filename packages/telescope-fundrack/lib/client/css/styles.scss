@@ -132,6 +132,18 @@ a.account-link[href="/register"] {
   content: "";
 }
 
+.post-upvote .upvote-link i{
+  opacity: 0.7;
+}
+
+.post-upvote .voted.upvote-link i:before{
+  content: "\2191";
+}
+
+.post-upvote .voted.upvote-link i{
+  opacity: 0.4;
+}
+
 .action-icon.icon-share{
   background: url('/img/share55.png') no-repeat;
 }
