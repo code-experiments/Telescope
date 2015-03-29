@@ -37,7 +37,6 @@ primaryNav = [
         order: 20
     }
 ];
-
 secondaryNav = [
     {
         template: 'feedbackLink',

@@ -34,12 +34,12 @@ Template[getTemplate('customNav')].helpers({
         var user = Meteor.user();
         return isAdmin(user);
     },
+    notLoggedIn:  function(){
+        return !Meteor.user();
+    },
     isNotAdmin:  function(){
         var user = Meteor.user();
         return !isAdmin(user);
-    },
-    notLoggedIn:  function(){
-        return !Meteor.user();
     }
 });
 
@@ -48,5 +48,12 @@ Template[getTemplate('customNav')].events({
         e.preventDefault();
         e.stopPropagation(); // Make sure we don't immediately close the mobile nav again. See layout.js event handler.
         $('body').toggleClass('mobile-nav-open');
+    }
+});
+
+Template[getTemplate('submitFRButton')].helpers({
+    isNotAdmin:  function(){
+        var user = Meteor.user();
+        return !isAdmin(user);
     }
 });
