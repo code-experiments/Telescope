@@ -32,4 +32,8 @@
 	     left: 10px;
 	     text-align: left;
      }
+
+     .feedback-link{
+	     padding: 10px;
+     }
 }
