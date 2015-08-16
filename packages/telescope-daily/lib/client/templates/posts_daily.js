@@ -1,36 +1,45 @@
-Meteor.startup(function () {
+Template.posts_daily.onCreated(function () {
+  var instance = this;
+  instance.daysCount = new ReactiveVar(instance.data.daysCount);
+});
 
-  Template[getTemplate('postsDaily')].helpers({
-    days: function () {
-      var daysArray = [];
-      // var days = this.days;
-      var days = Session.get('postsDays');
-      for (i = 0; i < days; i++) {
-        daysArray.push({
-          date: moment().subtract(i, 'days').startOf('day').toDate(),
-          index: i
-        });
-      }
-      return daysArray;
-    },
-    before_day: function () {
-      return getTemplate('beforeDay');
-    },
-    singleDay: function () {
-      return getTemplate('singleDay');
-    },
-    context: function () {
-      var context = this;
-      context.showDateNav = false;
-      return context;
-    },
-    after_day: function () {
-      return getTemplate('afterDay');
-    },
-    loadMoreDaysUrl: function () {
-      var count = parseInt(Session.get('postsDays')) + daysPerPage;
-      return '/daily/' + count;
+Template.posts_daily.helpers({
+  days: function () {
+    var instance = Template.instance();
+    var daysCount = instance.daysCount.get();
+
+    var daysArray = [];
+    for (var i = 0; i < daysCount; i++) {
+      daysArray.push({
+        date: moment().subtract(i, 'days').startOf('day').toDate(),
+        index: i
+      });
     }
-  });
+    return daysArray;
+  },
+  context: function () {
+    var instance = Template.instance();
+    var daysCount = instance.daysCount.get();
 
+    // var days = Template.parentData(1);
+    var context = {
+      terms: {
+        view: "singleday",
+        date: this.date,
+        after: moment(this.date).startOf('day').toDate(),
+        before: moment(this.date).endOf('day').toDate(),
+        enableCache: daysCount <= 15 ? true : false // only cache first 15 days
+      }
+    };
+    return context;
+  },
+  loadMoreHandler: function () {
+    var instance = Template.instance();
+    var daysCount = instance.daysCount.get();
+
+    return function () {
+      var newCount = daysCount + daysPerPage;
+      instance.daysCount.set(newCount);
+    };
+  }
 });

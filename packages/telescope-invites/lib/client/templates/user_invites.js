@@ -1,4 +1,4 @@
-Template[getTemplate('userInvites')].created = function () {
+Template.user_invites.created = function () {
 
   var user = this.data;
   var instance = this;
@@ -6,24 +6,24 @@ Template[getTemplate('userInvites')].created = function () {
   instance.invites = new ReactiveVar({});
 
   Meteor.autorun(function () {
-    coreSubscriptions.subscribe('invites', user._id);
+    Telescope.subsManager.subscribe('invites', user._id);
     var invites = Invites.find({invitingUserId: user._id});
     instance.invites.set(invites);
   });
 };
 
-Template[getTemplate('userInvites')].helpers({
+Template.user_invites.helpers({
   canCurrentUserInvite: function () {
     var currentUser = Meteor.user();
-    return currentUser && (currentUser.inviteCount > 0 && can.invite(currentUser));
+    return currentUser && (Users.is.admin(currentUser) || currentUser.telescope.inviteCount > 0 && Users.can.invite(currentUser));
   },
   invitesLeft: function () {
     var currentUser = Meteor.user();
-    return currentUser ? currentUser.inviteCount : 0;
+    return (currentUser && !(Users.is.admin(currentUser))) ? (currentUser.telescope.inviteCount - currentUser.telescope.invitedCount) : 0
   },
   invitesSchema: function () {
     // expose schema for Invites (used by AutoForm)
-    return InviteSchema;
+    return Invites.simpleSchema();
   },
   invites: function () {
     return Template.instance().invites.get();
@@ -39,22 +39,22 @@ var scrollUp = function(){
 
 AutoForm.hooks({
   inviteForm: {
-    onSuccess: function(operation, result, template) {
-      clearSeenMessages();
+    onSuccess: function(operation, result) {
+      Messages.clearSeen();
 
       if(result && result.newUser){
-        flashMessage('An invite has been sent out. Thank you!', "success");
+        Messages.flash('An invite has been sent out. Thank you!', "success");
       } else {
-        flashMessage('Thank you!', "info");
+        Messages.flash('Thank you!', "info");
       }
       scrollUp();
     },
 
-    onError: function(operation, error, template) {
-      clearSeenMessages();
+    onError: function(operation, error) {
+      Messages.clearSeen();
 
       if(error && error.reason){
-        flashMessage(error.reason, "error");
+        Messages.flash(error.reason, "error");
         scrollUp();
       }
     }

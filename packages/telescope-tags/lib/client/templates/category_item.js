@@ -1,15 +1,18 @@
 Meteor.startup(function () {
-  Template[getTemplate('categoryItem')].helpers({
+  Template.category_item.helpers({
     formId: function () {
-      return 'updateCategory-'+ this._id
+      return 'updateCategory-'+ this._id;
     }
   });
 
-  Template[getTemplate('categoryItem')].events({
+  Template.category_item.events({
     'click .delete-link': function(e, instance){
       e.preventDefault();
+
+      var categoryId = instance.data._id;
+
       if (confirm("Delete category?")) {
-        Categories.remove(instance.data._id);
+        Meteor.call("removeCategory", categoryId);
       }
     }
   });

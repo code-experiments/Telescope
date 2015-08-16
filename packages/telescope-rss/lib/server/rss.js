@@ -1,32 +1,44 @@
-var RSS = Npm.require('rss');
+RSS = Npm.require('rss');
 
-var getMeta = function(url) {
-  var siteUrl = getSetting('siteUrl', Meteor.absoluteUrl());
+getMeta = function(url) {
+  var siteUrl = Settings.get('siteUrl', Meteor.absoluteUrl());
   return {
-    title: getSetting('title'),
-    description: getSetting('tagline'),
+    title: Settings.get('title'),
+    description: Settings.get('tagline'),
     feed_url: siteUrl+url,
     site_url: siteUrl,
-    image_url: siteUrl+'img/favicon.png',
+    image_url: siteUrl+'img/favicon.png'
   };
 };
 
-servePostRSS = function(view, url) {
+servePostRSS = function(view, url, category) {
   var feed = new RSS(getMeta(url));
 
-  var params = getPostsParameters({view: view, limit: 20});
+  var terms = {view: view, limit: 20};
+  if (category) {
+    terms.category = category;
+  };
+  var params = Posts.getSubParams(terms);
   delete params['options']['sort']['sticky'];
 
   Posts.find(params.find, params.options).forEach(function(post) {
+
     var description = !!post.body ? post.body+'</br></br>' : '';
-    feed.item({
-     title: post.title,
-     description: description+'<a href="'+getPostUrl(post._id)+'">Discuss</a>',
-     author: post.author,
-     date: post.postedAt,
-     url: getPostLink(post),
-     guid: post._id
-    });
+    var feedItem = {
+      title: post.title,
+      description: description + '<a href="' + post.getPageUrl(true) + '">Discuss</a>',
+      author: post.author,
+      date: post.postedAt,
+      guid: post._id,
+      url: Posts.getShareableLink(post)
+    };
+
+    if (post.thumbnailUrl) {
+      var url = Telescope.utils.addHttp(post.thumbnailUrl);
+      feedItem.custom_elements = [{"imageUrl":url}, {"content": url}];
+    }
+
+    feed.item(feedItem);
   });
 
   return feed.xml();
@@ -39,10 +51,10 @@ serveCommentRSS = function() {
     post = Posts.findOne(comment.postId);
     feed.item({
      title: 'Comment on '+post.title,
-     description: comment.body+'</br></br>'+'<a href="'+getPostCommentUrl(post._id, comment._id)+'">Discuss</a>',
+     description: comment.body+'</br></br>'+'<a href="'+Telescope.utils.getPostCommentUrl(post._id, comment._id)+'">Discuss</a>',
      author: comment.author,
      date: comment.postedAt,
-     url: getCommentUrl(comment._id),
+     url: comment.getPageUrl(true),
      guid: comment._id
     });
   });

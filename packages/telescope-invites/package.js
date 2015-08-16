@@ -1,7 +1,8 @@
 Package.describe({
-  summary: 'Telescope invites package',
-  version: '0.1.0',
-  name: 'telescope-invites'
+  name: "telescope:invites",
+  summary: "Telescope invites package",
+  version: "0.23.0",
+  git: "https://github.com/TelescopeJS/telescope-invites.git"
 });
 
 Npm.depends({
@@ -10,19 +11,13 @@ Npm.depends({
 
 Package.onUse(function (api) {
 
+  api.versionsFrom("METEOR@1.0");
+
   // --------------------------- 1. Meteor packages dependencies ---------------------------
 
   // automatic (let the package specify where it's needed)
 
-  api.use([
-    'tap:i18n',
-    'iron:router',
-    'telescope-base',
-    'telescope-lib',
-    'telescope-i18n',
-    'aldeed:simple-schema',
-    'aldeed:autoform'
-  ]);
+  api.use(['telescope:core@0.23.0']);
 
   // client
 
@@ -42,45 +37,40 @@ Package.onUse(function (api) {
 
   // i18n config (must come first)
 
-  api.add_files([
+  api.addFiles([
     'package-tap.i18n'
   ], ['client', 'server']);
 
   // both
 
-  api.add_files([
+  api.addFiles([
     'lib/invites.js'
   ], ['client', 'server']);
 
   // client
 
-  api.add_files([
+  api.addFiles([
     'lib/client/templates/user_invites.html',
     'lib/client/templates/user_invites.js'
   ], ['client']);
 
   // server
 
-  api.add_files([
+  api.addFiles([
     'lib/server/invites.js',
     'lib/server/publications.js'
-  ], ['server']);    
+  ], ['server']);
 
   // i18n languages (must come last)
 
-  api.add_files([
-    'i18n/de.i18n.json',
-    'i18n/en.i18n.json',
-    'i18n/es.i18n.json',
-    'i18n/fr.i18n.json',
-    'i18n/it.i18n.json',
-    'i18n/zh-CN.i18n.json'
-  ], ['client', 'server']);
+  var languages = ["ar", "bg", "cs", "da", "de", "el", "en", "es", "et", "fr", "hu", "it", "ja", "ko", "nl", "pl", "pt-BR", "ro", "ru", "sv", "th", "tr", "vi", "zh-CN"];
+  var languagesPaths = languages.map(function (language) {
+    return "i18n/"+language+".i18n.json";
+  });
+  api.addFiles(languagesPaths, ["client", "server"]);
 
   // -------------------------------- 3. Variables to export --------------------------------
 
-  api.export([
-    //
-  ]);
+  api.export("Invites");
 
 });

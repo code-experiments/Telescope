@@ -9,33 +9,31 @@ var delay = (function(){
 
 Meteor.startup(function () {
 
-  Template[getTemplate('search')].helpers({
+  Template.search.helpers({
     canSearch: function () {
-      return can.view(Meteor.user());
+      return Users.can.view(Meteor.user());
     },
     searchQuery: function () {
-      return Session.get("searchQuery");
+      return this.searchQuery;
     },
     searchQueryEmpty: function () {
-      return !!Session.get("searchQuery") ? '' : 'empty';
+      return this.searchQuery ? "" : "empty";
     }
   });
 
-  Template[getTemplate('search')].events({
-    'keyup, search .search-field': function(e){
+  Template.search.events({
+    'keyup .search-field': function (e) {
       e.preventDefault();
       var val = $(e.target).val(),
           $search = $('.search');
       if (val === '') {
         // if search field is empty, just do nothing and show an empty template
         $search.addClass('empty');
-        Session.set('searchQuery', '');
-        Router.go('search', null, {replaceState: true});
+        // Router.go('search', null, {replaceState: true});
       } else {
         $search.removeClass('empty');
         // if search field is not empty, add a delay to avoid firing new searches for every keystroke
         delay(function(){
-          Session.set('searchQuery', val);
 
           // Update the querystring.
           var opts = {query: {q: val}};

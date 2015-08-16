@@ -1,42 +1,28 @@
 Package.describe({
-  summary: 'Auto post via RSS to Telescope',
-  version: '0.0.1',
-  name: 'telescope-post-by-feed'
+  name: "telescope:post-by-feed",
+  summary: "Auto post via RSS to Telescope",
+  version: "0.23.0",
+  git: "https://github.com/TelescopeJS/telescope-post-by-feed.git"
 });
 
 Npm.depends({
-  'htmlparser2': '3.8.2',
+  'feedparser': '1.0.0',
   'to-markdown': '0.0.2',
-  'he': '0.5.0'
+  'he': '0.5.0',
+  'iconv-lite': '0.4.7'
 });
 
 Package.onUse(function(api) {
 
-  api.use([
-    'telescope-base', 
-    'telescope-tags',
-    'aldeed:simple-schema',
-    'aldeed:autoform',
-    'tap:i18n',
-    'fourseven:scss',
-  ], ['client', 'server']);
+  api.versionsFrom("METEOR@1.0");
 
-  api.use([
-    'iron:router',
-    'templating'
-  ], 'client');
+  api.use(['telescope:core@0.23.0']);
 
-  api.use([
-    'http',
-    'mrt:moment',
-    'percolatestudio:synced-cron'
-  ], 'server');
-
-  api.add_files([
+  api.addFiles([
     'lib/feeds.js'
   ], ['client', 'server']);
 
-  api.add_files([
+  api.addFiles([
     'lib/client/routes.js',
     'lib/client/scss/feeds.scss',
     'lib/client/templates/feeds.js',
@@ -45,15 +31,17 @@ Package.onUse(function(api) {
     'lib/client/templates/feed_item.html',
   ], 'client');
 
-  api.add_files([
+  api.addFiles([
     'lib/server/fetch_feeds.js',
     'lib/server/cron.js',
     'lib/server/publications.js'
   ], ['server']);
 
-  api.add_files([
-    "i18n/en.i18n.json"
-  ], ["client", "server"]);
+  var languages = ["ar", "bg", "cs", "da", "de", "el", "en", "es", "et", "fr", "hu", "it", "ja", "ko", "nl", "pl", "pt-BR", "ro", "ru", "sv", "th", "tr", "vi", "zh-CN"];
+  var languagesPaths = languages.map(function (language) {
+    return "i18n/"+language+".i18n.json";
+  });
+  api.addFiles(languagesPaths, ["client", "server"]);
 
   api.export([
     'Feeds'

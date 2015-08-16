@@ -1,18 +1,18 @@
-heroModules.push({
-  template: 'taglineBanner',
-  order: 1
+Telescope.modules.add("top", {
+  template: "tagline_banner",
+  order: 1,
+  only: ["posts_default"]
 });
 
 var showTaglineBanner = {
-  propertyName: 'showTaglineBanner',
-  propertySchema: {
+  fieldName: 'showTaglineBanner',
+  fieldSchema: {
     type: Boolean,
     optional: true,
-    label: 'Tagline banner',
     autoform: {
-      group: 'general',
+      group: '01_general',
       instructions: 'Show tagline on homepage.'
     }
   }
-}
-addToSettingsSchema.push(showTaglineBanner);
+};
+Settings.addField(showTaglineBanner);

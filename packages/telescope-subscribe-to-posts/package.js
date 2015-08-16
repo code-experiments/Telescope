@@ -1,33 +1,20 @@
 Package.describe({
-  summary: 'Subscribe to posts to be notified when they get new comments',
-  version: '0.1.0',
-  name: 'telescope-subscribe-to-posts'
+  name: "telescope:subscribe-to-posts",
+  summary: "Subscribe to posts to be notified when they get new comments",
+  version: "0.23.0",
+  git: "https://github.com/TelescopeJS/telescope-subscribe-to-posts.git"
 });
 
 
 Package.onUse(function (api) {
 
+  api.versionsFrom("METEOR@1.0");
+
   // --------------------------- 1. Meteor packages dependencies ---------------------------
 
   // automatic (let the package specify where it's needed)
 
-  api.use([
-    'tap:i18n',
-    'iron:router',
-    'telescope-base',
-    'telescope-lib',
-    'telescope-i18n',
-    'fourseven:scss',
-    'telescope-notifications'
-  ]);
-
-  // client
-
-  api.use([
-    'jquery',                     // useful for DOM interactions
-    'underscore',                 // JavaScript swiss army knife library
-    'templating'                  // required for client-side templates
-  ], ['client']);
+  api.use(['telescope:core@0.23.0']);
 
   // ---------------------------------- 2. Files to include ----------------------------------
 
@@ -57,16 +44,18 @@ Package.onUse(function (api) {
 
   api.addFiles([
     'lib/server/publications.js'
-  ], ['server']);    
+  ], ['server']);
 
   // i18n languages (must come last)
 
-  api.addFiles([
-    'i18n/en.i18n.json',
-  ], ['client', 'server']);
+  var languages = ["ar", "bg", "cs", "da", "de", "el", "en", "es", "et", "fr", "hu", "it", "ja", "ko", "nl", "pl", "pt-BR", "ro", "ru", "sv", "th", "tr", "vi", "zh-CN"];
+  var languagesPaths = languages.map(function (language) {
+    return "i18n/"+language+".i18n.json";
+  });
+  api.addFiles(languagesPaths, ["client", "server"]);
 
   api.export([
-    'subscribeItem', 
+    'subscribeItem',
     'unsubscribeItem'
   ]);
 
